@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Container, Nav, Navbar, NavLink } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
 import logo from '../../../icon/company_logo.png';
 
 const Navigation = () => {
@@ -13,13 +14,13 @@ const Navigation = () => {
                         <Nav className='me-auto' >
                             <Nav.Link as={NavLink} to="/home">Home</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">About Us</Nav.Link>
-                            <Nav.Link as={NavLink} to="/about">Projects</Nav.Link>
+                            <Nav.Link as={NavLink} to="/projects">Projects</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">Contact</Nav.Link>
                             <Nav.Link as={NavLink} to="/about">Admin</Nav.Link>
 
                         </Nav>
                         <Nav >
-                            <Nav.Link href="#deets"><Button>Login</Button></Nav.Link>
+                            <Nav.Link as={NavLink} to="/login"><Button>Login</Button></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
