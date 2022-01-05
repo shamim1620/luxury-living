@@ -1,0 +1,12 @@
+.contact-form input{
+ width: 22%;
+ padding: 10px;
+ margin: 5px;
+ background-color: rgb(200, 199, 199);
+}
+#text-field{
+    width: 45%;
+    height: 100px;
+    background-color: rgb(200, 199, 199);
+    
+}

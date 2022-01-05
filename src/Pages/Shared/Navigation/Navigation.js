@@ -1,9 +1,11 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import logo from '../../../icon/company_logo.png';
 
 const Navigation = () => {
+    const { user, logOut } = useAuth();
     return (
         <div className='container'>
             <Navbar collapseOnSelect expand="lg" >
@@ -20,8 +22,17 @@ const Navigation = () => {
 
                         </Nav>
                         <Nav >
-                            <Nav.Link as={NavLink} to="/login"><Button>Login</Button></Nav.Link>
-                            <Nav.Link as={NavLink} to="/register"><Button>Register</Button></Nav.Link>
+                            {
+                                user.email ?
+                                    <>
+                                        <span>{user.displayName}</span>
+                                        <Button onClick={logOut}>log out</Button>
+                                    </>
+                                    :
+                                    <>
+                                        <Nav.Link as={NavLink} to="/login"><Button>Login</Button></Nav.Link>
+                                    </>
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

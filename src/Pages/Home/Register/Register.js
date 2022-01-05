@@ -1,12 +1,22 @@
 import React from 'react';
-import { Button, ButtonGroup } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 import "./Register.css";
 
 const Register = () => {
+    const { registerUser } = useAuth();
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = loginData => {
+        console.log(loginData)
+        if (loginData.password !== loginData.password2) {
+            alert('Password not match');
+            return
+        }
+        registerUser(loginData.email, loginData.password);
+
+    }
     return (
         <div className='d-flex justify-content-center align-items-center' >
             <div className=''>
@@ -17,7 +27,7 @@ const Register = () => {
                     <input placeholder='Last Name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
                     <input placeholder='Email' type='email' {...register("email", { required: true })} />
                     <input placeholder='Password' type="password" {...register("password", { required: true, minLength: 8 })} />
-                    <input placeholder='Password' type="password" {...register("cofirm password", { required: true, minLength: 8 })} />
+                    <input placeholder='Confirm Password' type="password" {...register("password2", { required: true, minLength: 8 })} />
                     <Button type='submit'> Create Account</Button>
                 </form>
                 <p>Already have an account?<Link to='/login'>Login</Link></p>
