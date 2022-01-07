@@ -2,11 +2,13 @@
  width: 22%;
  padding: 10px;
  margin: 5px;
- background-color: rgb(200, 199, 199);
+ background-color: rgb(224, 224, 224);
+ border-width: 0;
 }
 #text-field{
     width: 45%;
     height: 100px;
-    background-color: rgb(200, 199, 199);
+    background-color: rgb(224, 223, 223);
+    border-width: 0;
     
 }

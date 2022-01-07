@@ -2,3 +2,11 @@
     background-color:rgb(37, 29, 88);
     color: white;
 }
+.footer a{
+    text-decoration: none;
+    color: white;
+    
+}
+a:hover {
+    text-decoration: underline;
+  }

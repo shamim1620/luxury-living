@@ -21,7 +21,7 @@ const Contact = () => {
                     <input placeholder='Email' type='email' {...register("email", { required: true })} />
                     <input placeholder='Password' type="password" {...register("password", { required: true, minLength: 8 })} />
                     <br />
-                    <textarea id='text-field' placeholder='your message'></textarea>
+                    <textarea placeholder='your message' id='text-field' {...register("message")} />
                     <br />
                     <Button type='submit'> send message</Button>
                 </form>
