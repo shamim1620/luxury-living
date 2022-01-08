@@ -19,7 +19,7 @@ const Contact = () => {
                     <input placeholder='Last Name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
                     <br />
                     <input placeholder='Email' type='email' {...register("email", { required: true })} />
-                    <input placeholder='Password' type="password" {...register("password", { required: true, minLength: 8 })} />
+                    <input placeholder='Phone Number' type="number" {...register("phoneNumber", { required: true })} />
                     <br />
                     <textarea placeholder='your message' id='text-field' {...register("message")} />
                     <br />
