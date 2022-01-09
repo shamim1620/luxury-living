@@ -17,7 +17,8 @@ const AddService = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log('Success:', data);
+                alert('Data add successfully')
+                reset();
             })
             .catch(error => {
                 console.error('Error:', error);
