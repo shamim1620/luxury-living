@@ -4,9 +4,24 @@ import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 
 const AddService = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        console.log(data.image[0])
+        const formData = new FormData();
+        formData.append('serviceTitle', data.serviceTitle)
+        formData.append('description', data.description)
+        formData.append('image', data.image[0])
+        fetch('http://localhost:5000/services', {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
     }
     return (
         <div>

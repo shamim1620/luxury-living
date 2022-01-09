@@ -1,12 +1,20 @@
+import axios from 'axios';
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import './Contact.css';
 
 const Contact = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
-        console.log(data)
+        axios.post('http://localhost:5000/messages', data)
+            .then(res => {
+                console.log(res);
+                if (res.data.insertedId) {
+                    alert('Message Sent');
+                    reset();
+                }
+            })
     }
     return (
         <div >
