@@ -1,22 +1,35 @@
-import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
+import { Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import ServiceCard from '../ServiceCard/ServiceCard';
 
-const Service = ({ service }) => {
-    const { serviceTitle, description, image } = service;
+import './Service.css'
+
+const Service = () => {
+    const [services, setServices] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/services')
+            .then(res => res.json())
+            .then(data => setServices(data))
+    }, [])
+
     return (
-        <div>
+        <div className='container'>
+            <p className='text-center mt-5'>Service</p>
+            <h3 className='text-center'>We're an agency tailored to all
+                <br />
+                clients' needs that always delivers</h3>
 
-            <Col>
-                <Card>
-                    <Card.Img variant="top" src={`data:image/jpeg;base64,${image}`} />
-                    <Card.Body>
-                        <Card.Title>{serviceTitle}</Card.Title>
-                        <Card.Text>
-                            {description}
-                        </Card.Text>
-                    </Card.Body>
-                </Card>
-            </Col>
+            <Row xs={1} md={3} className="g-4">
+                {
+                    services.slice(0, 3).map(service => <ServiceCard
+                        key={service._id}
+                        service={service}
+                    ></ServiceCard>)
+                }
+            </Row>
+            <p className='text-center'><Link to="/services">Explore more...</Link></p>
 
         </div>
     );

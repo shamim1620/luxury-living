@@ -1,5 +1,6 @@
 import React from 'react';
-import Services from '../../Services/Services/Services';
+import Service from '../../Services/Service/Service';
+
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
 import Bannar from '../Bannar/Bannar';
@@ -10,7 +11,7 @@ const Home = () => {
         <div >
             <Navigation></Navigation>
             <Bannar></Bannar>
-            <Services></Services>
+            <Service></Service>
             <Contact></Contact>
             <Footer></Footer>
         </div>

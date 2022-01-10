@@ -1,0 +1,10 @@
+.service-card{
+    height: 350px;
+    overflow: hidden;
+    margin-bottom: 10px;
+    
+}
+.service-card img{
+    width: 50%;
+    margin: auto;
+}
