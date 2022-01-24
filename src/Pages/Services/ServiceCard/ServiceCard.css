@@ -1,7 +1,7 @@
 .service-card{
-    height: 350px;
+    /* height: 350px; */
     overflow: hidden;
-    margin-bottom: 10px;
+    
     
     
 }
@@ -9,3 +9,11 @@
     width: 50%;
     margin: auto;
 }
+.max-lines {
+    display: block;/* or inline-block */
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.6em;
+    line-height: 1.8em;
+  }

@@ -16,7 +16,7 @@ const Service = () => {
 
     return (
         <div className='container'>
-            <p className='text-center mt-5'>Service</p>
+            <p className='text-center mt-4'>Service</p>
             <h3 className='text-center'>We're an agency tailored to all
                 <br />
                 clients' needs that always delivers</h3>

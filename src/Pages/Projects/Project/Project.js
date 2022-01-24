@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import Footer from '../../Shared/Footer/Footer';
-import Navigation from '../../Shared/Navigation/Navigation';
 import ProjectCard from '../PorjectCard/ProjectCard';
 
-const Projects = () => {
+const Project = () => {
     const [projects, setProjects] = useState([]);
 
     useEffect(() => {
@@ -15,21 +13,23 @@ const Projects = () => {
 
     return (
         <div>
-            <Navigation></Navigation>
-            <h3 className='text-center'>Our Projects</h3>
+            <p className='text-center mt-5'>projects</p>
+            <h3 className='text-center mb-4'>Discover the latest Interior Design
+                <br />
+                available today</h3>
             <div className="container">
                 <Row xs={1} md={3} className="g-4">
                     {
-                        projects.map(project => <ProjectCard
+                        projects.slice(0, 3).map(project => <ProjectCard
                             key={project._id}
                             project={project}
                         ></ProjectCard>)
                     }
                 </Row>
             </div>
-            <Footer></Footer>
+
         </div>
     );
 };
 
-export default Projects;
+export default Project;

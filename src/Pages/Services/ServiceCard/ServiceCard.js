@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Col } from 'react-bootstrap';
+import { Button, Card, Col } from 'react-bootstrap';
 import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
@@ -13,9 +13,10 @@ const ServiceCard = ({ service }) => {
                     <Card.Img variant="top" src={`data:image/jpeg;base64,${image}`} />
                     <Card.Body>
                         <Card.Title >{serviceTitle}</Card.Title>
-                        <Card.Text >
+                        <Card.Text className='max-lines' >
                             {description}
                         </Card.Text>
+                        <Button variant="primary">Explore</Button>
                     </Card.Body>
                 </Card>
             </Col>
