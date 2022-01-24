@@ -18,6 +18,8 @@ import AddService from './Pages/Dashboard/AddService/AddService';
 import OrderList from './Pages/Dashboard/OrderList/OrderList';
 import Services from './Pages/Services/Services/Services';
 import AddProject from './Pages/Dashboard/AddProject/AddProject';
+import ServiceDetails from './Pages/Services/ServiceDetails/ServiceDetails';
+
 
 function App() {
   return (
@@ -38,7 +40,9 @@ function App() {
             <Route path="addProject" element={<AddProject />} />
 
           </Route>
-          <Route path="services" element={<Services />}></Route>
+          <Route path="services" element={<Services />} />
+          <Route path='/serviceDetails/:_id' element={<ServiceDetails />} />
+
         </Routes>
       </Router>
     </AuthProvider>

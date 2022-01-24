@@ -16,7 +16,7 @@ const Register = () => {
             return
         }
         else {
-            registerUser(loginData.email, loginData.password)
+            registerUser(loginData.email, loginData.password,loginData.name)
 
             navigate('/home')
         }
@@ -28,11 +28,10 @@ const Register = () => {
                 <h3>Create your account</h3>
 
                 <form className='registation-form' onSubmit={handleSubmit(onSubmit)}>
-                    <input placeholder='First Name' {...register("firstName", { required: true, maxLength: 20 })} />
-                    <input placeholder='Last Name' {...register("lastName", { pattern: /^[A-Za-z]+$/i })} />
+                    <input placeholder='Your Name' {...register("name", { required: true })} />
                     <input placeholder='Email' type='email' {...register("email", { required: true })} />
-                    <input placeholder='Password' type="password" {...register("password", { required: true, minLength: 8 })} />
-                    <input placeholder='Confirm Password' type="password" {...register("password2", { required: true, minLength: 8 })} />
+                    <input placeholder='Password' type="password" {...register("password", { required: true, minLength: 4 })} />
+                    <input placeholder='Confirm Password' type="password" {...register("password2", { required: true, minLength: 4 })} />
                     <Button type='submit'> Create Account</Button>
                 </form>
                 <p>Already have an account?<Link to='/login'>Login</Link></p>

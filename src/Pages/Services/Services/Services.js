@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
+
 import Footer from '../../Shared/Footer/Footer';
 import Navigation from '../../Shared/Navigation/Navigation';
-import Service from '../Service/Service';
+
 import ServiceCard from '../ServiceCard/ServiceCard';
 
 const Services = () => {
@@ -13,6 +14,7 @@ const Services = () => {
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])
+
     return (
         <div >
             <Navigation></Navigation>

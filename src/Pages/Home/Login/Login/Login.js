@@ -8,19 +8,13 @@ import './Login.css';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
-    const onSubmit = data => console.log(data);
-
-    const location = useLocation();
-    const navigate = useNavigate();
     const { signInUsingGoogle } = useAuth();
-    const redirect_uri = location.state?.form || '/home';
+    const navigate = useNavigate();
+    const onSubmit = data => console.log(data);
 
 
     const handleGoogleLogIn = () => {
-        signInUsingGoogle()
-            .then(result => {
-                navigate(redirect_uri);
-            })
+        signInUsingGoogle(navigate)
     }
 
     return (

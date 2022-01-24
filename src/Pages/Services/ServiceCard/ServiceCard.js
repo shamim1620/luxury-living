@@ -1,11 +1,15 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
-    const { serviceTitle, description, image } = service;
-
-
+    const { _id, serviceTitle, description, image } = service;
+    console.log(_id)
+    const navigate = useNavigate()
+    const handleOnClick = () => {
+        navigate(`/serviceDetails/${_id}`)
+    }
     return (
         <div>
             <Col>
@@ -16,7 +20,7 @@ const ServiceCard = ({ service }) => {
                         <Card.Text className='max-lines' >
                             {description}
                         </Card.Text>
-                        <Button variant="primary">Explore</Button>
+                        <Button onClick={handleOnClick} variant="primary">Explore</Button>
                     </Card.Body>
                 </Card>
             </Col>
