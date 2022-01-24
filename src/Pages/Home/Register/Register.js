@@ -1,20 +1,25 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import "./Register.css";
 
 const Register = () => {
     const { registerUser } = useAuth();
+    const navigate = useNavigate();
     const { register, handleSubmit } = useForm();
+
     const onSubmit = loginData => {
-        console.log(loginData)
         if (loginData.password !== loginData.password2) {
             alert('Password not match');
             return
         }
-        registerUser(loginData.email, loginData.password);
+        else {
+            registerUser(loginData.email, loginData.password)
+
+            navigate('/home')
+        }
 
     }
     return (

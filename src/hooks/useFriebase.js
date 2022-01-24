@@ -4,23 +4,29 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 
 
 
+
 initializeAuthentication();
 
 const useFirebase = () => {
     const [user, setUser] = useState({});
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
+    const [isLoding,setIsLoding]=useState(true)
+
     const signInUsingGoogle = () => {
+
         return signInWithPopup(auth, googleProvider)
     }
-    const registerUser = (email,password) => {
+    const registerUser = (email, password) => {
+        setIsLoding(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                
+
             })
             .catch((error) => {
-                
-            });
+
+            })
+            .finally(()=>setIsLoding(false))
     }
 
     //obsarver
@@ -29,6 +35,7 @@ const useFirebase = () => {
             if (user) {
                 setUser(user)
             }
+            setIsLoding(false)
         });
     }, [])
 
@@ -45,6 +52,7 @@ const useFirebase = () => {
         user,
         signInUsingGoogle,
         registerUser,
+        isLoding,
         logOut
     }
 

@@ -17,6 +17,7 @@ import MakeAdmin from './Pages/Dashboard/MakeAdmin/MakeAdmin';
 import AddService from './Pages/Dashboard/AddService/AddService';
 import OrderList from './Pages/Dashboard/OrderList/OrderList';
 import Services from './Pages/Services/Services/Services';
+import AddProject from './Pages/Dashboard/AddProject/AddProject';
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
             <Route path="orderList" element={<OrderList />} />
             <Route path="makeAdmin" element={<MakeAdmin />} />
             <Route path="addService" element={<AddService />} />
+            <Route path="addProject" element={<AddProject />} />
+
           </Route>
           <Route path="services" element={<Services />}></Route>
         </Routes>
