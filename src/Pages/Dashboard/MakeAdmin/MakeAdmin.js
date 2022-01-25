@@ -1,14 +1,28 @@
-import React from 'react';
+import axios from 'axios';
+import { Button } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
 
 const MakeAdmin = () => {
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = data => {
+        axios.put('http://localhost:5000/users/admin', data)
+            .then(function (res) {
+                alert("Make admin successfully")
+                reset()
+            })
+            .catch(function (error) {
+
+            });
+    }
     return (
-        <div>
-            <h3>this is make admin</h3>
-            <h3>this is make admin</h3>
-            <h3>this is make admin</h3>
-            <h3>this is make admin</h3>
-            <h3>this is make admin</h3>
-            <h3>this is make admin</h3>
+        <div >
+            <form className='contact-form' onSubmit={handleSubmit(onSubmit)}>
+                <span>Email</span>
+                <br />
+                <input style={{ width: "340px" }} placeholder='example@gmail.com'  {...register("email", { required: true })} />
+                <Button type='submit'>Submit</Button>
+            </form>
         </div>
     );
 };
