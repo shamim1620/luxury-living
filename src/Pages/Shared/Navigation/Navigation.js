@@ -1,11 +1,12 @@
 import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
+import { Button, Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import logo from '../../../icon/company_logo.png';
 
 const Navigation = () => {
     const { user, logOut } = useAuth();
+    const { email, displayName, photoURL } = user;
     return (
         <div className='container'>
             <Navbar collapseOnSelect expand="lg" >
@@ -23,14 +24,24 @@ const Navigation = () => {
                         </Nav>
                         <Nav >
                             {
-                                user.email ?
+                                !user.email ?
                                     <>
-                                        <span>{user.displayName}</span>
-                                        <Button onClick={logOut}>log out</Button>
+                                        <Nav.Link as={NavLink} to="/login"><Button>Login</Button></Nav.Link>
                                     </>
                                     :
                                     <>
-                                        <Nav.Link as={NavLink} to="/login"><Button>Login</Button></Nav.Link>
+
+                                        <NavDropdown title={<img style={{ width: "45px", borderRadius: "50%", }} src={photoURL} alt="" />
+                                        }
+                                        >
+                                            <div className="text-center">
+                                                <h6>{displayName}</h6>
+                                                <p className="m-0 mb-2">{email}</p>
+                                                <button onClick={logOut} className="btn btn-primary">
+                                                    Sign Out
+                                                </button>
+                                            </div>
+                                        </NavDropdown>
                                     </>
                             }
                         </Nav>
