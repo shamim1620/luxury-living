@@ -1,6 +1,6 @@
 import initializeAuthentication from "../Pages/Home/Login/Firebase/Firebase.init";
 import { useEffect, useState } from "react";
-import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "firebase/auth";
 
 
 
@@ -26,7 +26,7 @@ const useFirebase = () => {
                 navigate('/home');
             })
     }
-    const registerUser = (email, password, name) => {
+    const registerUser = (email, password, name, navigate) => {
         setIsLoding(true);
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -37,6 +37,7 @@ const useFirebase = () => {
                 updateProfile(auth.currentUser, {
                     displayName: name
                 }).then(() => {
+                    navigate('/home');
 
                 }).catch((error) => {
 
@@ -46,6 +47,15 @@ const useFirebase = () => {
 
             })
             .finally(() => setIsLoding(false))
+    }
+    const loginWithEmailPassword = (email, password, navigate) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                navigate('/home');
+            })
+            .catch((error) => {
+                alert("Wrong information");
+            });
     }
 
     //obsarver
@@ -91,6 +101,7 @@ const useFirebase = () => {
         admin,
         signInUsingGoogle,
         registerUser,
+        loginWithEmailPassword,
         isLoding,
         logOut
     }

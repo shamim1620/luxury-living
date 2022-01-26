@@ -31,7 +31,7 @@ const Footer = () => {
                     <br />
                     <a href=''>Sales</a>
                     <br />
-                    <a href=''>Contact</a>
+                    <a href='/contact'>Contact</a>
                     <br />
                     <a href=''>Our Blog</a>
                 </Col>

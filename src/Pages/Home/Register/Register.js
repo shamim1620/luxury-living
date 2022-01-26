@@ -16,9 +16,8 @@ const Register = () => {
             return
         }
         else {
-            registerUser(loginData.email, loginData.password,loginData.name)
+            registerUser(loginData.email, loginData.password,loginData.name, navigate)
 
-            navigate('/home')
         }
 
     }

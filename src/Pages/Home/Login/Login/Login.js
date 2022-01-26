@@ -1,17 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth';
 import logo from '../../../../icon/company_logo.png';
 import './Login.css';
 
 const Login = () => {
     const { register, handleSubmit } = useForm();
-    const { signInUsingGoogle } = useAuth();
+    const { signInUsingGoogle, loginWithEmailPassword } = useAuth();
     const navigate = useNavigate();
-    const onSubmit = data => console.log(data);
-
+    const onSubmit = loginData => {
+        loginWithEmailPassword(loginData.email, loginData.password, navigate)
+    }
 
     const handleGoogleLogIn = () => {
         signInUsingGoogle(navigate)
@@ -24,7 +25,7 @@ const Login = () => {
                 <form className='mt-5 login-form' onSubmit={handleSubmit(onSubmit)}>
                     <input type='email' placeholder='email' {...register("email", { required: true })} />
                     <input type='password' placeholder='password' {...register("password", { required: true })} />
-                    <input type="submit" />
+                    <Button type='submit'>Login</Button>
                 </form>
                 <Button onClick={handleGoogleLogIn} className='google-btn mt-5 '>Continue with google</Button>
                 <p>Don't have account?<Link to="/register">Create Account</Link></p>
