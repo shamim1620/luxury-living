@@ -5,7 +5,6 @@ import './ServiceCard.css';
 
 const ServiceCard = ({ service }) => {
     const { _id, serviceTitle, description, image } = service;
-    console.log(_id)
     const navigate = useNavigate()
     const handleOnClick = () => {
         navigate(`/serviceDetails/${_id}`)

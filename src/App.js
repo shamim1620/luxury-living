@@ -19,6 +19,7 @@ import OrderList from './Pages/Dashboard/OrderList/OrderList';
 import Services from './Pages/Services/Services/Services';
 import AddProject from './Pages/Dashboard/AddProject/AddProject';
 import ServiceDetails from './Pages/Services/ServiceDetails/ServiceDetails';
+import PrivateOutlet from './Pages/Home/Login/PrivateOutlet/PrivateOutlet';
 
 
 function App() {
@@ -33,12 +34,14 @@ function App() {
           <Route path="contact" element={<Contact />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="dashboard" element={<Dashboard />}>
-            <Route path="orderList" element={<OrderList />} />
-            <Route path="makeAdmin" element={<MakeAdmin />} />
-            <Route path="addService" element={<AddService />} />
-            <Route path="addProject" element={<AddProject />} />
+          <Route path="/*" element={<PrivateOutlet />}>
+            <Route path="dashboard" element={<Dashboard />}>
+              <Route path="orderList" element={<OrderList />} />
+              <Route path="makeAdmin" element={<MakeAdmin />} />
+              <Route path="addService" element={<AddService />} />
+              <Route path="addProject" element={<AddProject />} />
 
+            </Route>
           </Route>
           <Route path="services" element={<Services />} />
           <Route path='/serviceDetails/:_id' element={<ServiceDetails />} />

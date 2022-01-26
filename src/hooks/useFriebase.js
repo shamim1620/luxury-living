@@ -5,6 +5,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChang
 
 
 
+
 initializeAuthentication();
 
 const useFirebase = () => {
@@ -12,6 +13,7 @@ const useFirebase = () => {
     const googleProvider = new GoogleAuthProvider();
     const auth = getAuth();
     const [isLoding, setIsLoding] = useState(true)
+    const [admin, setAdmin] = useState(false);
 
     const signInUsingGoogle = (navigate) => {
         signInWithPopup(auth, googleProvider)
@@ -56,6 +58,12 @@ const useFirebase = () => {
         });
     }, [])
 
+    useEffect(() => {
+        fetch(`http://localhost:5000/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
+
 
     const logOut = () => {
         signOut(auth).then(() => {
@@ -80,6 +88,7 @@ const useFirebase = () => {
 
     return {
         user,
+        admin,
         signInUsingGoogle,
         registerUser,
         isLoding,
