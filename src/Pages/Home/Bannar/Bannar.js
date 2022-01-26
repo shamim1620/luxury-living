@@ -1,8 +1,13 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import bannar_img from '../../../image/bannar_image.png';
 
 const Bannar = () => {
+    const navigate = useNavigate();
+    const handleOnClick = () => {
+        navigate('/services')
+    }
     return (
         <div className='container'>
 
@@ -11,7 +16,7 @@ const Bannar = () => {
                     <h2>We Build Your Dream</h2>
                     <p>Online Easte Agency, the mordern way to sell your own home,
                         You can use Griffin Residential to market your property</p>
-                    <h6><Button>Booking</Button></h6>
+                    <h6><Button onClick={handleOnClick}>Booking</Button></h6>
                 </Col>
                 <Col xs={12} md={6}>
                     <img className='img-fluid' src={bannar_img} alt=''></img>
