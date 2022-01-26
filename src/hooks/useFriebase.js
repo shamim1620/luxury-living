@@ -22,7 +22,6 @@ const useFirebase = () => {
                 const user = result.user;
                 //save to database
                 saveUser(user.email, user.displayName, 'PUT');
-                console.log(user.displayName)
                 navigate('/home');
             })
     }
