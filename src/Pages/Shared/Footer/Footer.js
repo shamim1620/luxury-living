@@ -5,8 +5,8 @@ import './Footer.css';
 const Footer = () => {
     return (
         <div className='footer'>
-            <Row className='py-4'>
-                <Col xs={12} md={4}>
+            <Row className='py-4 container'>
+                <Col xs={12} md={5}>
                     xs=6 md=4
                 </Col>
                 <Col xs={6} md={2}>
@@ -35,7 +35,7 @@ const Footer = () => {
                     <br />
                     <a href=''>Our Blog</a>
                 </Col>
-                <Col xs={12} md={4}>
+                <Col xs={12} md={3}>
                     <h6>About us</h6>
                 </Col>
             </Row>

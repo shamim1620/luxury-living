@@ -9,7 +9,7 @@ const AddProject = () => {
         const formData = new FormData();
         formData.append('projectTitle', data.projectTitle)
         formData.append('image', data.image[0])
-        fetch('http://localhost:5000/projects', {
+        fetch('https://murmuring-badlands-95403.herokuapp.com/projects', {
             method: 'POST',
             body: formData
         })

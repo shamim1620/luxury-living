@@ -7,7 +7,7 @@ import './Contact.css';
 const Contact = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
-        axios.post('http://localhost:5000/messages', data)
+        axios.post('https://murmuring-badlands-95403.herokuapp.com/messages', data)
             .then(res => {
                 console.log(res);
                 if (res.data.insertedId) {

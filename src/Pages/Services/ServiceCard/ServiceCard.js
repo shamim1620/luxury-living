@@ -22,7 +22,7 @@ const ServiceCard = ({ service }) => {
         }
 
 
-        axios.post('http://localhost:5000/orders', bookingInfo)
+        axios.post('https://murmuring-badlands-95403.herokuapp.com/orders', bookingInfo)
             .then(function (response) {
                 alert("booking successful")
             })

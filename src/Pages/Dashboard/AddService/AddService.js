@@ -11,7 +11,7 @@ const AddService = () => {
         formData.append('serviceTitle', data.serviceTitle)
         formData.append('description', data.description)
         formData.append('image', data.image[0])
-        fetch('http://localhost:5000/services', {
+        fetch('https://murmuring-badlands-95403.herokuapp.com/services', {
             method: 'POST',
             body: formData
         })
