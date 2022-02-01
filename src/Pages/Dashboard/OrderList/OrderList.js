@@ -14,7 +14,7 @@ const OrderList = () => {
 
     }, [])
     const handleOnClick = id => {
-        axios.delete(`http://localhost:5000/orders/${id}`)
+        axios.delete(`https://murmuring-badlands-95403.herokuapp.com/orders/${id}`)
             .then(res => {
                 if (res.data.deletedCount === 1) {
                     const rest = orders.filter(order => order._id !== id);
