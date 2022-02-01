@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import OrderTable from '../OrderTable/OrderTable';
 
@@ -11,8 +13,20 @@ const OrderList = () => {
             .then(data => setOrders(data))
 
     }, [])
-    console.log(orders);
+    const handleOnClick = id => {
+        axios.delete(`http://localhost:5000/orders/${id}`)
+            .then(res => {
+                if (res.data.deletedCount === 1) {
+                    const rest = orders.filter(order => order._id !== id);
+                    setOrders(rest);
+                    alert('succesfull deletion');
+                } else {
+                    alert('Something went wrong!!');
+                }
 
+            })
+    }
+    console.log(orders);
     return (
         <div>
             <table class="table">
@@ -20,7 +34,8 @@ const OrderList = () => {
                     <tr>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">service Name</th>
+                        <th scope="col">Service Name</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,7 +43,9 @@ const OrderList = () => {
                         orders.map(order => <OrderTable
                             key={order._id}
                             order={order}
+                            handleOnClick={handleOnClick}
                         ></OrderTable>)
+
                     }
                 </tbody>
             </table>
